@@ -1,7 +1,0 @@
-
-Algorytm =>  SORTOWANIA SZYBKIEGO 
-Czas sortowania 1 tablic 
-o rozmiarze 10000
-Posortowanych w : 0 % 
-WYNOSI (średnia dla jednej tablicy) -> 0.009503
-
