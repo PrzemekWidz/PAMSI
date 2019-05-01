@@ -12,11 +12,17 @@ private :
 
 public :
 
-    // constructor
+    // definition of the constructor
 
-    graph();
+    graph(){
 
-    // declaration of other functions
+      vertex = 0;
+      edge   = 0;
+
+           }
+
+    // declaration of the other functions
+
     void loadVertexNumber ();
     void loadEdgeNumber   ();
 
@@ -24,49 +30,6 @@ public :
     int  returnEdge       ();
 };
 
-// definition of constructor
 
-graph::graph(){
-
-  vertex = 0;
-  edge   = 0;
-
-}
-
-// definition of other functions
-
-int graph::returnVertex(){
-
-   int tmp;
-   tmp =vertex;
-
-   return tmp;
-};
-
-
-int graph::returnEdge(){
-
-   int tmp;
-   tmp =edge;
-
-   return tmp;
-};
-
-
-void graph::loadVertexNumber(){
-
-   int tmp;
-   std::cin >> tmp;
-   vertex=tmp;
-
-}
-
-void graph::loadEdgeNumber(){
-
-   int tmp;
-   std::cin >> tmp;
-   edge=tmp;
-
-}
 
 #endif // GRAPH_HH_INCLUDED

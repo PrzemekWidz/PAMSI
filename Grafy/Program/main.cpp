@@ -12,6 +12,7 @@ newGraph->loadAdjacencyMatrix();
 newGraph->showAdjacencyMatrix();
 newGraph->showGraphWeights();
 
+
 delete newGraph;
 
     return 0;
