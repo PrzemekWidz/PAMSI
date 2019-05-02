@@ -3,50 +3,30 @@
 
 #include "graph.hh"
 
-// A structure listElement that will have
-// information about nodes and weights
-// in our graph
-
-   struct listElement {
-
-   struct listElement *nextElement; // Pointer
-   // for the  next elements in our list
-   int node;     // Number of node
-   int weight;   // The walue of weight
-
-   };
-
-// Class list that will use element type
-// listElement [look up] in some areas
-
 class list : public graph{
 
-private :
+private:
 
-/* A pointers that will allow us to implement
-   a graph on list  and add next  elements     */
+// Number of vertex
 
-  // struct listElement *mainList;
+  int node;
 
-struct listElement *L,*p;
+// Value of connection between two vertices
 
-public :
+  int weight;
 
-// Constructor of our class
+// A pointer we need to add next connections
+// between vertices
 
-   /*list()
-   {
-     mainList->node=0;
-     mainList->weight=0;
-     mainList->nextElement = nullptr;
-   }*/
+  class list * next;
 
-// Declaration of other functions
+public:
+
+// Declaration of functions that are
+// in list source file
 
    void loadList ();
-   void showList ();
 
 };
-
 
 #endif // LIST_HH_INCLUDED

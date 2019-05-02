@@ -75,7 +75,7 @@ void matrix::showAdjacencyMatrix(){
     }
 }
 
-// Function that shows our graph weights between connections 
+// Function that shows our graph weights between connections
 
 void matrix::showGraphWeights(){
 

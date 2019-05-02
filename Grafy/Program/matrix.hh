@@ -5,7 +5,7 @@
 
 class matrix : public graph{
 
-private :
+private:
 
     // Matrix for our graph
     // that informs us about connection
@@ -17,7 +17,7 @@ private :
 
     int ** graphWeights;
 
-public :
+public:
 
     // Definition of constructor
 

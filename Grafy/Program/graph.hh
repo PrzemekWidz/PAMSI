@@ -4,14 +4,14 @@
 
 class graph {
 
-private :
+private:
 
     // Vertexes and edges of the graph
 
     int vertex;
     int edge;
 
-public :
+public:
 
     // Definition of the default class constructor
 

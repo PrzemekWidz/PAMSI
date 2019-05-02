@@ -1,72 +1,65 @@
 #include "list.hh"
-using namespace std;
 #include <iostream>
+using namespace std;
 
-// A function that loads our graph using
-// list class
+// Definitions of functions from header file
 
 void list::loadList(){
 
-  // Attribution of the variables edge and vertex
+   // Attribution of the variables edge and vertex
 
-  this->loadEdgeNumber();
-  this->loadVertexNumber();
+   this->loadEdgeNumber();
+   this->loadVertexNumber();
 
-  struct listElement *mainList[returnVertex()];
+   // Variables that we need to remember
+   // first and second vertex and weight
+   // between them
 
-  // Filling nullptr inside mainList elements
+   int wmax,x,y,z;
 
-     for(int i=0;i<returnVertex();i++)
-     {
-      mainList[i]->nextElement=nullptr;
-     }
+   // Two pointers type "list"
+   // one for main list , second for
+   // adding new elements
 
-  // Filling our graph implemented on list
+   class list *L[returnVertex()],*newElement;
 
-     int x,y,z;
+   // Filling nullptr inside main list
 
-     for(int i=0;i<returnEdge();i++)
-     {
-       cin >> x;
-       cin >> y;
-       cin >> z;
+   for(int i = 0; i < returnVertex(); i++)
+   {
+     L[i] = NULL;
+   }
 
-       struct listElement *pointerElement;
+   wmax = 0;
 
-       pointerElement = new listElement;
+  // A proper main list filling in one loop
 
-       pointerElement->nextElement=mainList[x-1]->nextElement;
-       pointerElement->node=y;
-       pointerElement->weight=z;
+    for(int i = 0; i < returnEdge(); i++)
+    {
+      // Reading an edge and weight
+      cin >> x >> y >> z;
 
-       mainList[x-1]->nextElement=pointerElement;
+      wmax = (x > wmax) ? x : wmax;
+      wmax = (y > wmax) ? y : wmax;
 
-     }
+      newElement = new list;
+      newElement->next = L[x];
+      newElement->node = y;
+      newElement->weight = z;
+      L[x] = newElement;
+    }
 
-     cout << endl;
 
-     struct listElement *pointerElement;
-
-     pointerElement = new listElement;
-
-     for(int i=0;i<returnVertex();i++)
-     {
-       pointerElement=mainList[i];
-
-       while (pointerElement) {
-                  cout << pointerElement->node;
-                  cout << "$" << pointerElement->weight << " ";
-                  pointerElement=pointerElement->nextElement;
-                               }
-     }
-
+  for(int i = 0; i < returnVertex(); i++)
+  {
+    cout << i  << ":";
+    newElement = L[i];
+    while(newElement)
+    {
+      cout << newElement->node << "#" << newElement->weight << " ";
+      newElement = newElement->next;
+    }
+    cout << endl;
+  }
 
 }
-
-// A function that shows our graph using
-// list class
-
-void list::showList(){
-
-
- }
