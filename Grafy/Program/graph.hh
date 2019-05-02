@@ -13,7 +13,7 @@ private :
 
 public :
 
-    // Definition of the default class constructor 
+    // Definition of the default class constructor
 
     graph(){
 

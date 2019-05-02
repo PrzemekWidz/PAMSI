@@ -1,11 +1,11 @@
 #include <iostream>
 #include "graph.hh"
 
-/* Definitions of other functions 
+/* Definitions of other functions
    declared  in class graph       */
 
-// Funcion of type int that returns 
-// vertex value 
+// Funcion of type int that returns
+// vertex value
 
 int graph::returnVertex(){
 
@@ -16,7 +16,7 @@ int graph::returnVertex(){
 }
 
 
-// Funcion of type int that returns 
+// Funcion of type int that returns
 // edge value
 
 int graph::returnEdge(){
@@ -27,8 +27,8 @@ int graph::returnEdge(){
    return tmp;
 }
 
-// Funcion of type void that allows user 
-// to load varaible vertex 
+// Funcion of type void that allows user
+// to load varaible vertex
 
 void graph::loadVertexNumber(){
 
@@ -38,8 +38,8 @@ void graph::loadVertexNumber(){
 
 }
 
-// Funcion of type void that allows user 
-// to load varaible edge 
+// Funcion of type void that allows user
+// to load varaible edge
 
 void graph::loadEdgeNumber(){
 
