@@ -1,19 +1,24 @@
 #include <iostream>
+#include <iomanip>
+#include <cstdlib>
+using namespace std;
 #include "matrix.hh"
 
 
-// definition of other functions
+// Definition of other functions
+
+/* Function that loads a matrix */
 
 void matrix::loadAdjacencyMatrix(){
 
-   // attribution of the variables edge and vertex
+   // Attribution of the variables edge and vertex
 
    this->loadEdgeNumber();
    this->loadVertexNumber();
 
    // 1.Creating a new matrix for graph edges
    // and another one for graph weights depending on
-   // the number of Vertex and Edges which we already know
+   // the number of Vertexes and Edges which we already know
    // 2.Creating a dynamic table structure which consists of tables
    // [one type int] , [second type char]
 
@@ -26,7 +31,7 @@ void matrix::loadAdjacencyMatrix(){
     graphWeights[i]=new int[returnVertex()];
    }
 
-   // filling zeros inside our matrix of graph and weights
+   // Filling zeros inside our matrix of graph and weights
 
    for(int i=0;i<returnVertex();i++){
 
@@ -36,7 +41,7 @@ void matrix::loadAdjacencyMatrix(){
             graphWeights[i][j]=0;
             }
                                     }
-    // a proper filling graph with weights and connections 
+    // ...and a proper filling graph with weights and connections
 
    int weight;
     int v1;
@@ -56,17 +61,21 @@ void matrix::loadAdjacencyMatrix(){
 
 }
 
+// Function that shows our adjacencyMatrix
+
 void matrix::showAdjacencyMatrix(){
 
     for(int i=0;i<returnVertex();i++)
     {
       for(int j=0;j<returnVertex();j++)
       {
-          std::cout << (int)adjacencyMatrix[i][j];
+          cout << setw(3) << (int)adjacencyMatrix[i][j];
       }
-      std::cout << '\n';
+      cout << '\n';
     }
 }
+
+// Function that shows our graph weights between connections 
 
 void matrix::showGraphWeights(){
 
@@ -74,8 +83,8 @@ void matrix::showGraphWeights(){
     {
       for(int j=0;j<returnVertex();j++)
       {
-          std::cout << graphWeights[i][j];
+          cout << setw(3) << graphWeights[i][j];
       }
-                std::cout << '\n';
+                cout << '\n';
     }
 }

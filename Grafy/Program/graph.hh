@@ -1,18 +1,19 @@
 #ifndef GRAPH_HH_INCLUDED
 #define GRAPH_HH_INCLUDED
 
+
 class graph {
 
 private :
 
-    // vertexes and edges of the graph
+    // Vertexes and edges of the graph
 
     int vertex;
     int edge;
 
 public :
 
-    // definition of the constructor
+    // Definition of the default class constructor 
 
     graph(){
 
@@ -21,7 +22,8 @@ public :
 
            }
 
-    // declaration of the other functions
+    // Declaration of the other functions
+    // that are in sourse file ["graph.cpp"]
 
     void loadVertexNumber ();
     void loadEdgeNumber   ();
@@ -29,7 +31,6 @@ public :
     int  returnVertex     ();
     int  returnEdge       ();
 };
-
 
 
 #endif // GRAPH_HH_INCLUDED

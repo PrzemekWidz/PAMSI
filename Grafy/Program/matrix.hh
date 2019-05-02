@@ -7,17 +7,19 @@ class matrix : public graph{
 
 private :
 
-    // matrix for our graph
+    // Matrix for our graph
+    // that informs us about connection
+    // or no connection between two vertexes
 
     char ** adjacencyMatrix;
 
-    // matrix for our weights
+    // Matrix for our weights
 
     int ** graphWeights;
 
 public :
 
-    // definition of constructor
+    // Definition of constructor
 
     matrix(){
 
@@ -26,11 +28,12 @@ public :
 
             }
 
-    // declaration of other functions
+    // Declaration of other functions
 
     void loadAdjacencyMatrix();
     void showAdjacencyMatrix();
     void showGraphWeights();
+
 };
 
 
