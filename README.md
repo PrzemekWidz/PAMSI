@@ -6,5 +6,5 @@ Projekty :
 
 1. Katalog "Grafy" zawiera pliki nagłówkowe i źródłowe programu oraz plik Makefile w folderze o nazwie "Program" oraz sprawozdanie w formacie .pdf 
 
-commit x06 -> odczyt i zapis do pliku dla macierzy sasiedztwa, naprawiony algorytm Dijkstry dla macierzy sasiedztwa, problem z wyswietlaniem najlepszej sciezki
+commit "x2" -> odczyt i zapis do pliku dla macierzy sasiedztwa, naprawiony algorytm Dijkstry dla macierzy sasiedztwa, problem z wyswietlaniem najlepszej sciezki
 
