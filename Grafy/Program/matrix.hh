@@ -5,7 +5,7 @@
 
 class matrix : public graph{
 
-private:
+public:
 
     // Matrix for our graph
     // that informs us about connection
@@ -33,6 +33,7 @@ public:
     void loadAdjacencyMatrix();
     void showAdjacencyMatrix();
     void showGraphWeights();
+    void loadFromFile();
 
 };
 

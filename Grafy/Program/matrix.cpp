@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cstdlib>
 using namespace std;
+#include <fstream>
 #include "matrix.hh"
 
 
@@ -15,6 +16,7 @@ void matrix::loadAdjacencyMatrix(){
 
    this->loadEdgeNumber();
    this->loadVertexNumber();
+   this->loadSrcNumber();
 
    // 1.Creating a new matrix for graph edges
    // and another one for graph weights depending on
@@ -87,4 +89,59 @@ void matrix::showGraphWeights(){
       }
                 cout << '\n';
     }
+}
+
+// Function that loads graph on matrix
+// from txt file
+
+void matrix::loadFromFile(){
+
+ifstream plik("dane.txt");
+
+if(plik){
+        int x,y,z;
+
+        plik >> x;
+        plik >> y;
+        plik  >> z;
+
+         this->loadAtributesFromFile(x,y,z);
+
+         graphWeights= new int * [returnVertex()];
+
+         for(int i=0;i<returnVertex();i++)
+         {
+          graphWeights[i]=new int[returnVertex()];
+         }
+
+         // Filling zeros inside our matrix of weights
+
+         for(int i=0;i<returnVertex();i++){
+
+                for(int j=0;j<returnVertex();j++)
+                  {
+                  graphWeights[i][j]=0;
+                  }
+                }
+                
+         int weight;
+          int v1;
+           int v2;
+
+           for(int i=0;i<returnEdge();i++)
+           {
+             plik >> v1;
+             plik >> v2;
+             plik >> weight;
+
+             graphWeights[v1][v2]=weight;
+           }
+        }
+
+else
+{
+  cout << "Bląd odczytu" << endl;
+}
+
+
 }

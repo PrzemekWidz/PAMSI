@@ -5,7 +5,7 @@
 
 class list : public graph{
 
-private:
+public:
 
 // Number of vertex
 
@@ -20,11 +20,16 @@ private:
 
   class list * next;
 
+// Wierchołek startowy
+/* TU ZMIENIŁEM */
+   int start;
+
 public:
 
 // Declaration of functions that are
 // in list source file
 
+   int returnStart();
    void loadList ();
    void showList ();
    void dijkstryListAlgorithm();

@@ -9,22 +9,11 @@ using namespace std;
 int main()
 {
 
-/*matrix * newGraph = new matrix;
-newGraph->loadAdjacencyMatrix();
-newGraph->showAdjacencyMatrix();
-cout << endl;
-newGraph->showGraphWeights();
+matrix * newGraph = new matrix;
+dijkstryMatrixAlgorithm(newGraph);
 cout << endl;
 delete newGraph;
-*/
 
-
-list * newGraph = new list;
-
-newGraph->loadList();
-newGraph->showList();
-
-delete newGraph;
 
     return 0;
 }

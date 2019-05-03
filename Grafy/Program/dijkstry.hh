@@ -2,8 +2,15 @@
 #define DIJKSTRY_HH_INCLUDED
 
 #include "list.hh"
+#include "matrix.hh"
 
-// Declaration
+// Declarations of djkstryAlgorithm for
+// class list and matrix
+
+/* FOR CLASS MATRIX */
+int minimumDist(int dist[], bool Dset[],int vertex);
+
+void dijkstryMatrixAlgorithm(matrix *newGraph);
 
 
 

@@ -48,3 +48,34 @@ void graph::loadEdgeNumber(){
    edge=tmp;
 
 }
+
+// Function of type void that loads src number
+
+void graph::loadSrcNumber(){
+
+   int tmp;
+   std::cin >> tmp;
+   src=tmp;
+
+}
+
+// Function of type int that returns src number
+
+int graph::returnSrc(){
+
+     int tmp;
+     tmp = src;
+
+     return tmp;
+}
+
+// Function that we need to load graph
+// from file
+
+void graph::loadAtributesFromFile(int x,int y,int z)
+{
+   edge = x;
+   vertex = y;
+   src = z;
+
+}

@@ -10,6 +10,7 @@ private:
 
     int vertex;
     int edge;
+    int src;
 
 public:
 
@@ -19,6 +20,7 @@ public:
 
       vertex = 0;
       edge   = 0;
+      src    = 0;
 
            }
 
@@ -27,9 +29,14 @@ public:
 
     void loadVertexNumber ();
     void loadEdgeNumber   ();
+    void loadSrcNumber    ();
 
     int  returnVertex     ();
     int  returnEdge       ();
+    int  returnSrc        ();
+
+    void loadAtributesFromFile (int x,int y,int z);
+
 };
 
 
