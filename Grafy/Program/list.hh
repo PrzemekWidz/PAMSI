@@ -26,6 +26,8 @@ public:
 // in list source file
 
    void loadList ();
+   void showList ();
+   void dijkstryListAlgorithm();
 
 };
 

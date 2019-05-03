@@ -21,13 +21,14 @@ void list::loadList(){
    // one for main list , second for
    // adding new elements
 
-   class list *L[returnVertex()],*newElement;
+   this->next= new class list [returnVertex()];
+   class list *newElement;
 
    // Filling nullptr inside main list
 
    for(int i = 0; i < returnVertex(); i++)
    {
-     L[i] = NULL;
+     next[i].next = NULL;
    }
 
    wmax = 0;
@@ -43,23 +44,37 @@ void list::loadList(){
       wmax = (y > wmax) ? y : wmax;
 
       newElement = new list;
-      newElement->next = L[x];
+      newElement->next = next[x].next;
       newElement->node = y;
       newElement->weight = z;
-      L[x] = newElement;
+      next[x].next = newElement;
     }
+}
+// Function that shows our list
 
+void list::showList () {
+
+class list *newElement;
 
   for(int i = 0; i < returnVertex(); i++)
-  {
+    {
     cout << i  << ":";
-    newElement = L[i];
+    newElement = next[i].next;
     while(newElement)
     {
       cout << newElement->node << "#" << newElement->weight << " ";
       newElement = newElement->next;
     }
     cout << endl;
-  }
+   }
+
+}
+
+// Dijkstry alrogithm dor lists
+
+void list::dijkstryListAlgorithm(){
+
+
+
 
 }

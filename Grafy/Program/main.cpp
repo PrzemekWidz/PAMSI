@@ -2,6 +2,7 @@
 #include "matrix.hh"
 #include "graph.hh"
 #include "list.hh"
+#include "dijkstry.hh"
 
 using namespace std;
 
@@ -17,11 +18,13 @@ cout << endl;
 delete newGraph;
 */
 
-/*list * newGraph = new list;
+
+list * newGraph = new list;
 
 newGraph->loadList();
+newGraph->showList();
 
 delete newGraph;
-*/
+
     return 0;
 }
