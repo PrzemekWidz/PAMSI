@@ -7,32 +7,31 @@ class list : public graph{
 
 public:
 
-// Number of vertex
+   // A pointer type list class that will allow us to add new
+   // elements for lists
 
-  int node;
+   list * next;
 
-// Value of connection between two vertices
+   // Two intigers that will inform us about weights
+   // and vertexes
 
-  int weight;
+   int v;
+   int w;
 
-// A pointer we need to add next connections
-// between vertices
+   // A default class constructor
 
-  class list * next;
+   list(){
 
-// Wierchołek startowy
-/* TU ZMIENIŁEM */
-   int start;
+     v = 0;
+     w = 0;
+     next = nullptr;
 
-public:
+          }
 
-// Declaration of functions that are
-// in list source file
+   // Declarations of other functions that are in
+   // source file "list.cpp"
 
-   int returnStart();
-   void loadList ();
-   void showList ();
-   void dijkstryListAlgorithm();
+   void loadListFromFile ();
 
 };
 

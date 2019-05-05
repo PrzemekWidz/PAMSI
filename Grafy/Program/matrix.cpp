@@ -8,11 +8,13 @@ using namespace std;
 
 // Definition of other functions
 
-/* Function that loads a matrix */
+/* Function that loads a matrix
+   using a terminal [standard input ] */
 
 void matrix::loadAdjacencyMatrix(){
 
    // Attribution of the variables edge and vertex
+   // and source number
 
    this->loadEdgeNumber();
    this->loadVertexNumber();
@@ -91,14 +93,15 @@ void matrix::showGraphWeights(){
     }
 }
 
-// Function that loads graph on matrix
-// from txt file
+// Function that loads graph using matrix
+// representation from txt file
 
 void matrix::loadFromFile(){
 
 ifstream plik("dane.txt");
 
 if(plik){
+
         int x,y,z;
 
         plik >> x;
@@ -123,7 +126,7 @@ if(plik){
                   graphWeights[i][j]=0;
                   }
                 }
-                
+
          int weight;
           int v1;
            int v2;

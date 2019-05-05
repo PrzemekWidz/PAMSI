@@ -6,7 +6,9 @@ class graph {
 
 private:
 
-    // Vertexes and edges of the graph
+    // Vertexes and edges of the graph and the
+    // src which means a begining vertex of
+    // the graph [ source ]
 
     int vertex;
     int edge;

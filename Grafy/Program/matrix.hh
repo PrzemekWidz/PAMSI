@@ -19,13 +19,13 @@ public:
 
 public:
 
-    // Definition of constructor
+    // Definition of default constructor
 
     matrix(){
 
              adjacencyMatrix=nullptr;
              graphWeights=nullptr;
-
+             
             }
 
     // Declaration of other functions
