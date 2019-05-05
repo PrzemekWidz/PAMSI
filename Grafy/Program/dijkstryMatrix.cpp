@@ -90,14 +90,15 @@ if(plik.good()==true)
 {
 
 	plik<< endl;
-		for(int i=0;i<vertexTmp;i++){
-									 plik<<i;
-									 plik<< ": ";
-									 // Wyświetlamy ścieżkę, pobierając wierzchołki ze stosu
-                   for(int j = i; j > -1; j = p[j]) S[sptr++] = j;
-									 while(sptr) plik << S[--sptr] << " ";
-									 plik<<"#"<<dist[i]<<endl;
-								 }
+		for(int i=0;i<vertexTmp;i++)
+		{
+		plik<<i;
+		plik<< ": ";
+		// Wyświetlamy ścieżkę, pobierając wierzchołki ze stosu
+    for(int j = i; j > -1; j = p[j]) S[sptr++] = j;
+		while(sptr) plik << S[--sptr] << " ";
+		plik<<"#"<<dist[i]<<endl;
+		}
 
 	plik.close();
 }
