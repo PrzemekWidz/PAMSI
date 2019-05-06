@@ -13,6 +13,7 @@ using namespace std;
 
 double doTest (int reprezentacjaGrafu,int gestosc,int iloscElementow,int source){
 
+
 if(reprezentacjaGrafu==1)
   {
   double tmp;
@@ -55,14 +56,11 @@ for(int i=0;i<iloscElementow;i++)
 
      int wylosowana_liczba =( std::rand() % 100 )+1;
 
-//plik4<< help << " "<<endl;
+      plik4 << i << " ";
+      plik4 << j << " ";
+      plik4 << wylosowana_liczba << endl;
 
-       plik4 << i << " ";
-       plik4 << j << " ";
-       plik4 << wylosowana_liczba << endl;
-
-//help++;
-     plik4 << j << " ";
+      plik4 << j << " ";
       plik4 << i << " ";
       plik4 << wylosowana_liczba << endl;
 
