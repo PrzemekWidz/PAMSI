@@ -13,18 +13,38 @@ using namespace std;
 
 double doTest (int reprezentacjaGrafu,int gestosc,int iloscElementow,int source){
 
+clock_t poczatek,koniec,czas_trwania;
 
 if(reprezentacjaGrafu==1)
   {
-  double tmp;
   generateGraph(gestosc,iloscElementow,source);
+
+  poczatek=clock();
+  matrix * newGraph = new matrix;
+  dijkstryMatrixAlgorithm(newGraph);
+  cout << endl;
+
+  koniec=clock();
+  delete newGraph;
+
+  czas_trwania = koniec - poczatek;
+  double tmp = (double)czas_trwania / CLOCKS_PER_SEC;
   return tmp;
   }
 
 if(reprezentacjaGrafu==2)
   {
-  double tmp;
   generateGraph(gestosc,iloscElementow,source);
+
+  poczatek=clock();
+  list *newList = new list;
+  dijkstryListAlgorithm(newList);
+
+  koniec = clock();
+  delete newList;
+
+  czas_trwania = koniec - poczatek;
+  double tmp = (double)czas_trwania / CLOCKS_PER_SEC;
   return tmp;
   }
 
