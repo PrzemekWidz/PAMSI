@@ -1,0 +1,14 @@
+
+Średnia dlugość działania algorytmu
+dla reprezentacji : macierzowej
+rozmiaru : 100
+gestosci : 100
+wynosi : 6.91156e-310 s
+
+
+Średnia dlugość działania algorytmu
+dla reprezentacji : listwej
+rozmiaru : 100
+gestosci : 100 %
+wynosi : 6.95256e-310 s
+
