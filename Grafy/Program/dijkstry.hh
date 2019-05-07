@@ -4,7 +4,6 @@
 #include "list.hh"
 #include "matrix.hh"
 
-
 // Declarations of djkstryAlgorithm for
 // class list and class matrix
 

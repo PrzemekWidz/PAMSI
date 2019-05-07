@@ -6,12 +6,12 @@
 
 using namespace std;
 
-/* Climits used for INT_MAX , there is no infinity value typr */
+/* Climits used for INT_MAX , there is no infinity value type */
 // We have to simulate Infinity value
 
 const int MAXINT = 2147483647;
 
-/*A method to find the vertex with minimum distance*/
+/* A method to find the vertex with minimum distance */
 
 int minimumDist(int dist[], bool Dset[], int vertex)
 {
@@ -68,8 +68,6 @@ poczatek = clock();
 
 	for(int c=0;c<vertexTmp;c++)
   	{
-
-
   		int u=minimumDist(dist,Dset,vertexTmp);
 			Dset[u]=true;
 
@@ -90,7 +88,7 @@ poczatek = clock();
 
 koniec = clock();
 
-// Saving resaults in txt "wyniki" file
+// Saving resaults in txt "wynikiMatrix" file
 
 fstream plik;
 
@@ -104,7 +102,7 @@ if(plik.good()==true)
 		{
 		plik<<i;
 		plik<< ": ";
-		// Wyświetlamy ścieżkę, pobierając wierzchołki ze stosu
+		// We display the path by picking vertices from the stack
     for(int j = i; j > -1; j = p[j]) S[sptr++] = j;
 		while(sptr) plik << S[--sptr] << " ";
 		plik<<"#"<<dist[i]<<endl;

@@ -28,7 +28,7 @@ int m = this->returnEdge();
 
 int x , y ,z;
 
-graf = new list * [returnVertex()];       // Tablica list sąsiedztwa
+graf = new list * [returnVertex()];       // An adjacencyList table
 
   for(int i = 0; i < returnVertex(); i++)
   {
@@ -37,12 +37,12 @@ graf = new list * [returnVertex()];       // Tablica list sąsiedztwa
 
   for(int i = 0; i < m; i++)
   {
-    plik >> x >> y >> w;           // Odczytujemy krawędź z wagą
-    pw = new list;             // Tworzymy element listy sąsiedztwa
-    pw->v = y;                    // Wierzchołek docelowy krawędzi
-    pw->w = w;                    // Waga krawędzi
+    plik >> x >> y >> w;     // Reading edge with weight
+    pw = new list;           // Creating a new adjacencyList element
+    pw->v = y;               // Target edge tip
+    pw->w = w;               // A weight of the edge
     pw->next = graf[x];
-    graf[x] = pw;                 // Element dołączamy do listy
+    graf[x] = pw;            // Adding a new element to list 
   }
 
 }

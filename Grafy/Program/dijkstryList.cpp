@@ -26,23 +26,25 @@ plik2.open("wynikiList.txt",ios::out|ios::app);
 
 
 	  int i,j,m,n,v,u,w,x,y,sptr,*d,*p,*S;
-	  bool *QS;                       // Zbiory Q i S
-	  list **graf;                 // Tablica list sąsiedztwa
+	  bool *QS;                                  // Zbiory Q i S , jak są zbiory
+		                                           // po angielsku ?? -> sprawdzić
+
+	  list **graf;                               // AdjacencyList
 	  list *pw,*rw;
 
-	  plik >> m  >> n >> v;             // Węzeł startowy, liczba wierzchołków i krawędzi
+	  plik >> m  >> n >> v;  // Starting node, number of vertices and edges
 
 
-	  // Tworzymy tablice dynamiczne
+	  // Creating a dynamic tables
 
-	  d = new int [n];                // Tablica kosztów dojścia
-	  p = new int [n];                // Tablica poprzedników
+	  d = new int [n];                // Table of costs of access
+	  p = new int [n];                // Table of predecessors
 	  QS = new bool [n];              // Zbiory Q i S
-	  graf = new list * [n];       // Tablica list sąsiedztwa
-	  S = new int [n];                // Stos
-	  sptr = 0;                       // Wskaźnik stosu
+	  graf = new list * [n];          // AdjacencyList
+	  S = new int [n];                // A stack
+	  sptr = 0;                       // A stack pointer
 
-	  // Inicjujemy tablice dynamiczne
+	  // Initiating of dynamic tables
 
 	  for(i = 0; i < n; i++)
 	  {
@@ -52,39 +54,40 @@ plik2.open("wynikiList.txt",ios::out|ios::app);
 	    graf[i] = NULL;
 	  }
 
-	  // Odczytujemy dane wejściowe
+	  // Reading input data
 
 	  for(i = 0; i < m; i++)
 	  {
-	    plik >> x >> y >> w;           // Odczytujemy krawędź z wagą
-	    pw = new list;             // Tworzymy element listy sąsiedztwa
-	    pw->v = y;                    // Wierzchołek docelowy krawędzi
-	    pw->w = w;                    // Waga krawędzi
+	    plik >> x >> y >> w;           // Reading edge with weight
+	    pw = new list;                 // Creating a new adjacencyList element
+	    pw->v = y;                     // Target edge tip
+	    pw->w = w;                     // A weight of the edge
 	    pw->next = graf[x];
-	    graf[x] = pw;                 // Element dołączamy do listy
+	    graf[x] = pw;                  // Adding a new element to list
 	  }
 
 	  cout << endl;
 
-	  d[v] = 0;                       // Koszt dojścia v jest zerowy
+	  d[v] = 0;                       // The cost of access to v is zero
 
-	  // Wyznaczamy ścieżki
+
+    // Designate paths
 
 poczatek = clock();
 
 	  for(i = 0; i < n; i++)
 	  {
-	    // Szukamy wierzchołka w Q o najmniejszym koszcie d
+	    // Dinding a vertex in Q with the lowest cost of d
 
 	    for(j = 0; QS[j]; j++);
 	    for(u = j++; j < n; j++)
 	      if(!QS[j] && (d[j] < d[u])) u = j;
 
-	    // Znaleziony wierzchołek przenosimy do S
+	    // We move the founded vertex to S
 
 	    QS[u] = true;
 
-	    // Modyfikujemy odpowiednio wszystkich sąsiadów u, którzy są w Q
+	    // We modify all neighbors, who are in Q,
 
 	    for(pw = graf[u]; pw; pw = pw->next)
 	      if(!QS[pw->v] && (d[pw->v] > d[u] + pw->w))
@@ -96,23 +99,23 @@ poczatek = clock();
 
 koniec = clock();
 
-	  // Gotowe, wyświetlamy wyniki
+	// Ready, we display results
 	plik2 << endl;
 
 	  for(i = 0; i < n; i++)
 	  {
 	    plik2 << i << ": ";
 
-	    // Ścieżkę przechodzimy od końca ku początkowi,
-	    // Zapisując na stosie kolejne wierzchołki
+			// We go the path from the end to the beginning,
+			// Writing next vertices on the stack
 
 	    for(j = i; j > -1; j = p[j]) S[sptr++] = j;
 
-	    // Wyświetlamy ścieżkę, pobierając wierzchołki ze stosu
+	    // Display the path by retrieving vertices from the stack
 
 	    while(sptr) plik2 << S[--sptr] << " ";
 
-	    // Na końcu ścieżki wypisujemy jej koszt
+	    // At the end of the path, we write its cost
 
 	    plik2 << "#" << d[i] << endl;
 	  }

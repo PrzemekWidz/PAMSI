@@ -8,20 +8,20 @@
 #include <cstdlib>
 #include <ctime>
 
-
-
 using namespace std;
+
+// Main function
 
 int main()
 {
 
+// To generate random weights
 srand( time( NULL ) );
+// To save results in .txt file
 fstream plik;
 
-
-
 // A variable we need for out
-// program menu
+// program menu = decision
 
 while(1){
 
@@ -36,19 +36,23 @@ cout << "Decyzja : " << endl;
 cin >> decision;
 cout << endl;
 
+// If decision = 1 , djkstryAlgorithm
+// for matrix graph representation
 if(decision==1){
                 matrix * newGraph = new matrix;
                 dijkstryMatrixAlgorithm(newGraph);
                 cout << endl;
                 delete newGraph;
                }
-
+// If decision = 2 ,  djkstryAlgorithm
+// for list graph representation
 if(decision==2){
                  list *newList = new list;
                  dijkstryListAlgorithm(newList);
                  delete newList;
                }
-
+// If decision = 3 , then we use function doTest
+// to test Dijikstry algorithm speed
 if(decision==3){
 
       int ileRazy = 1;
@@ -93,6 +97,9 @@ plik.close();
 
               }
 
+
+// If decision = 4
+// we close our program
 if(decision==4){
                 return 0;
                }
