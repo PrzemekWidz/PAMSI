@@ -2,6 +2,7 @@
 #include <iostream>
 #include <climits>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -13,9 +14,11 @@ const int MAXINT = 2147483647;
 // A body of function
 // of dijkstry algorithm for the matrix representation
 
-void dijkstryListAlgorithm(list *Lista){
+double dijkstryListAlgorithm(list *Lista){
 
 ifstream plik("dane.txt");
+
+clock_t poczatek,koniec,czas_trwania;
 
 fstream plik2;
 
@@ -67,6 +70,8 @@ plik2.open("wynikiList.txt",ios::out|ios::app);
 
 	  // Wyznaczamy ścieżki
 
+poczatek = clock();
+
 	  for(i = 0; i < n; i++)
 	  {
 	    // Szukamy wierzchołka w Q o najmniejszym koszcie d
@@ -88,6 +93,8 @@ plik2.open("wynikiList.txt",ios::out|ios::app);
 	        p[pw->v] = u;
 	      }
 	  }
+
+koniec = clock();
 
 	  // Gotowe, wyświetlamy wyniki
 	plik2 << endl;
@@ -111,5 +118,9 @@ plik2.open("wynikiList.txt",ios::out|ios::app);
 	  }
 
 plik2.close();
+
+czas_trwania = koniec - poczatek;
+double tmp = (double)czas_trwania / CLOCKS_PER_SEC;
+return tmp;
 
 }

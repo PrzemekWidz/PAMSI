@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <ctime>
 
+
+
 using namespace std;
 
 int main()
@@ -15,6 +17,8 @@ int main()
 
 srand( time( NULL ) );
 fstream plik;
+
+
 
 // A variable we need for out
 // program menu

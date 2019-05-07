@@ -2,6 +2,7 @@
 #include <iostream>
 #include <climits>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
@@ -9,7 +10,6 @@ using namespace std;
 // We have to simulate Infinity value
 
 const int MAXINT = 2147483647;
-
 
 /*A method to find the vertex with minimum distance*/
 
@@ -37,10 +37,12 @@ possible value as infinity does not exist */
 // of dijkstry algorithm for the matrix representation
 // src == source
 
-void dijkstryMatrixAlgorithm(matrix *newGraph){
+double dijkstryMatrixAlgorithm(matrix *newGraph){
 
 // Do odczytywania z pliku
 newGraph->loadFromFile();
+
+clock_t poczatek,koniec,czas_trwania;
 
 int vertexTmp = newGraph->returnVertex();
 int srcTmp    = newGraph->returnSrc();
@@ -61,11 +63,17 @@ for(int i=0;i<vertexTmp;i++)
 		p[i] = -1;
 	}
 	dist[srcTmp]=0;
-  for(int c=0;c<vertexTmp;c++)
+
+poczatek = clock();
+
+	for(int c=0;c<vertexTmp;c++)
   	{
+
+
   		int u=minimumDist(dist,Dset,vertexTmp);
-  		Dset[u]=true;
-      for(int v=0;v<vertexTmp;v++)
+			Dset[u]=true;
+
+		  for(int v=0;v<vertexTmp;v++)
 			{
         int tmp;
         // To find the sortest path we only need
@@ -79,6 +87,8 @@ for(int i=0;i<vertexTmp;i++)
         }
   		}
   	}
+
+koniec = clock();
 
 // Saving resaults in txt "wyniki" file
 
@@ -102,5 +112,9 @@ if(plik.good()==true)
 
 	plik.close();
 }
+
+czas_trwania = koniec - poczatek;
+double tmp = (double)czas_trwania / CLOCKS_PER_SEC;
+return tmp;
 
 }

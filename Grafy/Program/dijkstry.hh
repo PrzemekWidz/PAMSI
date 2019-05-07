@@ -12,11 +12,11 @@
 
 int minimumDist(int dist[], bool Dset[],int vertex);
 
-void dijkstryMatrixAlgorithm(matrix *newGraph);
+double dijkstryMatrixAlgorithm(matrix *newGraph);
 
 /* FUNCTIONS FOR CLASS LIST */
 
-void dijkstryListAlgorithm(list *Lista);
+double dijkstryListAlgorithm(list *Lista);
 
 
 #endif // DIJIKSTRY_HH_INCLUDED
