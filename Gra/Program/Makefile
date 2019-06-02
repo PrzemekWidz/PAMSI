@@ -3,7 +3,7 @@ CC = g++
 CC_FLAGS = -w
  
 # File names
-EXEC = grafy
+EXEC = gra
 SOURCES = $(wildcard *.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)
  
