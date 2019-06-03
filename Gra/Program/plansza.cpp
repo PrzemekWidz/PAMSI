@@ -76,62 +76,7 @@ for(int i=0;i<rozmiar;i++)
 return 0;
 }
 
-/*
-bool planszaGra::sprawdzWygrana (char gracz,int rozmiar,int ilosc){
 
-
-// w poziomie
-
-for(int i=0;i<rozmiar;i++)
-{
-  for(int k=0;k<=rozmiar-ilosc;k++)
-  {
-    int help=0;
-
-     for(int j=0;j<ilosc;j++)
-     {
-       if(this->plansza[i][k+j]==gracz) help++;
-     }
-
-    if(help==ilosc) return true;
-    else return false;
-  }
-}
-
-// w pionie
-
-for(int i=0;i<rozmiar;i++)
-{
-  for(int k=0;k<=rozmiar-ilosc;k++)
-  {
-    int help=0;
-
-     for(int j=0;j<ilosc;j++)
-     {
-       if(this->plansza[k+j][i]==gracz) help++;
-     }
-
-    if(help==ilosc) return true;
-    else return false;
-  }
-}
-
-// inne
-
-for(int i=0;i<=rozmiar-ilosc;i++)
-{
-  for(int k=0;k<=rozmiar-ilosc;k++)
-  {
-    for(int j=0;j<ilosc;j++)
-    {
-      if(this->plansza[i+k][k+i]!=gracz) return false;
-      else return true;
-    }
-  }
-}
-
-}
-*/
 int planszaGra::sprawdzWygrana (char gracz,int rozmiar,int ilosc,int wiersz,int kolumna){
 
 int licznik;

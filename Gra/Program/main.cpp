@@ -1,5 +1,6 @@
 #include <iostream>
 #include "plansza.hh"
+#include "komputer.hh"
 
 #define ROZMIAR 5
 #define RZAD 3
