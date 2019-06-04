@@ -1,17 +1,12 @@
 #include <iostream>
-#include "game.hh"
-#include "ai.hh"
-#include "gameBoard.hh"
+#include "gra.h"
+#include "plansza.h"
 
 using namespace std;
 
-int main(){
-
-playGame game;
-
-game.loadGame();
-
-
-
-  return 0;
+int main()
+{
+    Gra gra;
+    gra.Przebieg();
+    return 0;
 }

@@ -1,201 +1,138 @@
-#include <iostream>
-#include "plansza.hh"
+#include "plansza.h"
+
 using namespace std;
 
-void planszaGra::generujPlansze(int rozmiar){
-
-  plansza = new char * [rozmiar];
-
-    for(int i=0;i<rozmiar;i++) plansza[i] = new char [rozmiar];
-
-      for(int i=0;i<rozmiar;i++)
-      {
-        for(int k=0;k<rozmiar;k++)
-        {
-         plansza[i][k]=' ';
-         }
-      }
+Plansza::Plansza(){
 }
 
-void planszaGra::wyswietlPlansze(int rozmiar){
+Plansza::~Plansza(){
+    delete [] plansza;
+    plansza=NULL;
+}
 
-cout << "  " ;
+/* Funkcja inicjalizuje plansze poprzez wpisanie do kazdego pustego pola - 0 */
+void Plansza::Inicjalizacja(int r,int w){
+	rozmiar=r;
+	rzadwygryw=w;
+	licznikruch=0;
+    ostatni[0]=ostatni[1]=rozmiar;
 
- for(int i=0;i<rozmiar;i++) cout << " " << i;
+    plansza=new int *[rozmiar];
+    for (int i=0;i<rozmiar;i++){
+        plansza[i]=new int[rozmiar];
+        for (int j=0;j<rozmiar;j++){
+            plansza[i][j]=0;
+        }
+    }
+}
 
-  cout << endl;
+/* Funkcja zwracajaca znak przypisany do wskazanego pola
+    1 - pole wybrane przez gracza (x), -1 - pole wybrane przez komputer (o), 0 - pole puste */
+char Plansza::Znak(int i,int j){
+    if(plansza[i][j]==1)
+		return 'x';
+    else if(plansza[i][j]==-1)
+		return 'o';
+    else
+		return ' ';
+}
 
-     for(int i=0;i<rozmiar;i++)
-      {
-        cout << i << " ";
+/* Funkcja wyswietlajaca plansze */
+void Plansza::Wyswietl(){
+    system("cls");
 
-          for(int j=0;j<rozmiar;j++)
-           {
-            cout << "|" << plansza[i][j];
+    cout<<"    Gra kolko i krzyzyk "<<rozmiar<<"x"<<rozmiar<<endl;
+	cout <<"   Aby wygrac uloz " << rzadwygryw << " w rzedzie" << endl;;
+    cout<<"Gracz - x     |     Komputer - o"<<endl<<endl;
+
+    cout << "  " ;
+
+     for(int i=0;i<this->rozmiar;i++) cout << " " << i;
+
+      cout << endl;
+
+         for(int i=0;i<this->rozmiar;i++)
+          {
+            cout << i << " ";
+
+              for(int j=0;j<this->rozmiar;j++)
+               {
+                cout << "|" << Znak(i,j);
+               }
+               cout << "|" <<endl;
+
+           if(i!=this->rozmiar-1)
+             {
+             cout << "  +";
+             for(int k=0;k<this->rozmiar-1;k++) cout << "-+";
+             cout << "-+" << endl;
+             }
            }
-           cout << "|" <<endl;
-
-       if(i!=rozmiar-1)
-         {
-         cout << "  +";
-         for(int k=0;k<rozmiar-1;k++) cout << "-+";
-         cout << "-+" << endl;
-         }
-       }
 
   cout << endl;
-
 }
 
-void planszaGra::wstawRuch (char gracz,int wiersz,int kolumna){
-
-this->plansza[wiersz][kolumna]=gracz;
-
+/* Funkcja ustawia znak na wybranym polu
+    1 - pole wybrane przez gracza (x), -1 - pole wybrane przez komputer (o), 0 - pole puste
+    Przy przypisywaniu pola dolicza ruch do licznika ruchow i zapisuje wspolrzedne tego ruchu do tablicy ostatni
+    Przy zwalnianiu pola (znak=0) odlicza ruch od liczby wykonanych ruchow i resetuje wspolrzedne ostatniego ruchu
+*/
+void Plansza::UstawZnak(int i,int j,int znak){
+    plansza[i][j]=znak;
+    if(znak==0){
+        licznikruch--;
+        ostatni[0]=ostatni[1]=rozmiar;
+    }
+    else{
+        licznikruch++;
+        ostatni[0]=i;
+        ostatni[1]=j;
+    }
 }
 
-bool planszaGra::sprawdzRuch (int wiersz, int kolumna){
+/* Funkcja sprawdzajaca czy gra zostala rozstrzygnieta
+    2 - gra w toku, 1 - wygrana gracza , -1 - wygrana komputera, 0 - remis
+    Jesli wspolrzedne ostatniego ruchu = szerokosci pola (reset) to zwraca 2.
+    Kiedy znajdzie rzad wygrywajacy to zwraca -1 lub 1.
+    Jezeli liczba ruchow rowna sie szerokosci pola do kwadratu to zwraca 0.
+	Jezeli zaden z warunkow nie zostanie spelniony zwraca 2.
+*/
+int Plansza::SprawdzZwyciezce(){
+    if(ostatni[0]==rozmiar)
+		return 2;
 
-if(this->plansza[wiersz][kolumna]==' ') return true;
-else return false;
+    int i,j,w,k,a,b,znak,licznik;
+    znak=licznik=1;
+    w=ostatni[0];
+    k=ostatni[1];
+    znak=plansza[w][k];
 
-}
-
-int planszaGra::sprawdzRemis (int rozmiar){
-
-int licznik = 0;
-
-for(int i=0;i<rozmiar;i++)
-{
-  for(int k=0;k<rozmiar;k++)
-  {
-    if(this->plansza[i][k]=='x'||this->plansza[i][k]=='o')
-    licznik=licznik+1;
-    if(licznik==rozmiar*rozmiar)return 1;
-  }
-}
-return 0;
-}
-
-
-int planszaGra::sprawdzWygrana (char gracz,int rozmiar,int ilosc,int wiersz,int kolumna){
-
-int licznik;
-
-// w prawo
-licznik = 0;
-
-for(int i=kolumna;i<rozmiar;i++)
-{
-  if(this->plansza[wiersz][i]==gracz) licznik=licznik+1;
-  if(licznik==ilosc) return 1;
-}
-
-
-// w lewo
-licznik = 0;
-
-for(int i=kolumna;i>=0;i--)
-{
-  if(this->plansza[wiersz][i]==gracz) licznik++;
-  if(licznik==ilosc) return 1;
-}
-
-
-// w dol
-licznik = 0;
-
-for(int i=wiersz;i<rozmiar;i++)
-{
-  if(this->plansza[i][kolumna]==gracz) licznik++;
-  if(licznik==ilosc) return 1;
-}
-
-
-// w gore ( przy sprawdzaniu isc w dol )
-licznik = 0;
-
-for(int i=wiersz;i>=0;i--)
-{
-  if(this->plansza[i][kolumna]==gracz) licznik++;
-  if(licznik==ilosc) return 1;
-
-}
-
-int tmpk, tmpw;
-
-tmpk = kolumna;
-tmpw = wiersz;
-// po przekatnych
-licznik = 0;
-int i=0;
-// od prawego dolnego rogu
-while((tmpw<rozmiar)&&(tmpk<rozmiar))
-{
-  if(this->plansza[tmpw][tmpk]==gracz) licznik++;
-
-    if(licznik==ilosc) return 1;
-
-    tmpk++;
-    tmpw++;
-}
-
-
-// od lewego gorneo
-tmpk = kolumna;
-tmpw = wiersz;
-
-licznik = 0;
-i=0;
-
-while(tmpw>=0&&tmpk>=0)
-{
-  if(this->plansza[tmpw][tmpk]==gracz) licznik++;
-
-
-    if(licznik==ilosc) return 1;
-
- tmpw--;
- tmpk--;
-
-}
-
-// inny przypadek ...
-
-tmpk = kolumna;
-tmpw = wiersz;
-// po przekatnych
-licznik = 0;
-i=0;
-// od prawego dolnego rogu
-while((tmpw>=0)&&(tmpk<rozmiar))
-{
-  if(this->plansza[tmpw][tmpk]==gracz) licznik++;
-
-    if(licznik==ilosc) return 1;
-
-    tmpk++;
-    tmpw--;
-}
-
-// jeszcze jeden
-
-tmpk = kolumna;
-tmpw = wiersz;
-// po przekatnych
-licznik = 0;
-i=0;
-// od prawego dolnego rogu
-while((tmpw<rozmiar)&&(tmpk>=0))
-{
-  if(this->plansza[tmpw][tmpk]==gracz) licznik++;
-
-    if(licznik==ilosc) return 1;
-
-    tmpk--;
-    tmpw++;
-}
-
-
-return 0;
-
+    for (i=-1;i<1;i++){
+        for(j=-1;j<=1;j++){
+            if(i>=0 && j>=0){
+                if(licznikruch>=rozmiar*rozmiar)
+					return 0;
+                else
+					return 2;
+            }
+            licznik=1;
+            a=i;
+            b=j;
+            while(w+a>=0 && w+a<rozmiar && k+b>=0 && k+b<rozmiar && plansza[w+a][k+b]==znak){
+                licznik++;
+                a+=i;
+                b+=j;
+            }
+            a=i;
+            b=j;
+            while(w-a>=0 && w-a<rozmiar && k-b>=0 && k-b<rozmiar && plansza[w-a][k-b]==znak){
+                licznik++;
+                a+=i;
+                b+=j;
+            }
+            if (licznik>=rzadwygryw)
+				return plansza[w][k];
+        }
+    }
+    return 2;
 }
