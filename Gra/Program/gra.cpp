@@ -1,135 +1,159 @@
-#include "gra.h"
+#include "gra.hh"
 #include <iostream>
 #include <cstdlib>
 
 using namespace std;
 
-Gra::Gra(){
-}
+// Konstruktor
+Gra::Gra(){ }
 
-Gra::~Gra(){
-}
+// Destruktor
+Gra::~Gra(){ }
 
-/* Funkcja inicjalizujaca gre
-    Pozwala wprowadzic rozmiar pola, dlugosc rzedu wygrywajacego i rozpoczynajacego gracza.
-    Inicjalizuje plansze i gracza komputer.
-*/
+/* Funkcja ladujaca gre */
+
 void Gra::Inicjalizacja(){
-    int rozmiar,rzadwygryw;
+
+    int rozmiar;
+    int rzadwygryw;
+
     stan=2;
     rozmiar=rzadwygryw=0;
 
-    cout<<"Podaj rozmiar planszy od 3 do 9:"<<endl;
-    while(1){
-        while (!(cin>>rozmiar)){
-			cout<<"Zly wybor"<<endl;
-			cout<<"Podaj rozmiar planszy od 3 do 9."<<endl;
+// Podawanie rozmiaru planszy i ilosci znakow w rzedzie przez uzytkownika
+// programu
 
-        }
-		if (rozmiar>2 && rozmiar<10)
-			break;
+// ROZMIAR PLANSZY
+    cout<< "Podaj rozmiar:"<< endl;
+    cout<< "3-5" << endl;
+
+    while(1)
+    {
+        while (!(cin>>rozmiar)){ cout<<"Źle, podaj jeszcze raz"<<endl; }
+
+		if (rozmiar>=3 && rozmiar<10) break;
+
 		else
-			cout<<"Zly rozmiar."<<endl;
-			cout<<"Podaj rozmiar planszy od 3 do 9."<<endl;
+			cout<<"Źle, podaj jeszcze raz"<<endl;
+
     }
+// WYGRYWAJACY CIAG
 
-    cout<<"Podaj dlugosc wygrywajacego rzedu od 3 do rozmiaru planszy:"<<endl;
-    while(1) {
-        while (!(cin>>rzadwygryw)){
-            cout<<"Zly wybor."<<endl;
-			cout<<"Podaj dlugosc wygrywajacego rzedu od 3 do rozmiaru planszy:"<<endl;
+    cout<<"Podaj dlugosc wygrywajacego ciagu:"<<endl;
 
+    while(1)
+    {
+        while (!(cin>>rzadwygryw))
+        {
+        cout<<"Źle, podaj jeszcze raz"<<endl;
         }
-        if(rzadwygryw>2 && rzadwygryw<=rozmiar)
-			break;
-        else
-			cout<<"Zly rozmiar."<<endl;
-			cout<<"Podaj dlugosc wygrywajacego rzedu od 3 do rozmiaru planszy:"<<endl;
+        if(rzadwygryw>=3 && rzadwygryw<=rozmiar) break;
+
+      else
+			cout<<"Źle, podaj jeszcze raz"<<endl;
+
     }
-    plansza.Inicjalizacja(rozmiar,rzadwygryw);
+
+// LADOWANIE PLANSZY
+// I OBIEKTU KOMPUTER
+
+  plansza.Inicjalizacja(rozmiar,rzadwygryw);
 	GKomputer.Inicjalizacja(plansza);
 
-    cout<<"Kto zaczyna? 1 - Gracz (x), 2 - Komputer (o)."<<endl;
-    while(1) {
-        while (!(cin>>gracz)) {
-            cout<<"Zly wybor."<<endl;
-			cout<<"Kto zaczyna? 1 - Gracz (x), 2 - Komputer (o)."<<endl;
+    cout << "Wcisnij 1 , zaczniesz gre Ty" << endl;
+    cout << "Wcisnij 2 , zacznie gre komputer" << endl;
 
+// WYBOR KTO ZACZYNA
+
+    while(1)
+    {
+        while (!(cin>>gracz))
+        {
+        cout<<"Źle, podaj jeszcze raz"<<endl;
         }
-        if(gracz==1 || gracz==2)
-			break;
+
+        if(gracz==1 || gracz==2) break;
+
         else
-			cout<<"Zly wybor."<<endl;
-			cout<<"Kto zaczyna? 1 - Gracz (x), 2 - Komputer (o)."<<endl;
+	          cout<<"Źle, podaj jeszcze raz"<<endl;
     }
 }
 
-/* Funkcja kontrolujaca przebieg gry
-    Wywoluje funkcje inicjalizujaca, wyswietla plansze, umozliwia wykonanie ruchu,
-    sprawdza stan gry po kazdym ruchu i zmienia graczy.
-    Po zakonczeniu gry umozliwia ponowna gre.
-*/
+/* Funkcja kontrolujaca przebieg gry*/
 void Gra::Przebieg(){
 
     while(1){
-        Inicjalizacja();
-        while(stan==2){
-            plansza.Wyswietl();
-            if(gracz==1)
-				RuchGracza();
-            else
-				GKomputer.RuchKomputera(plansza);
-            stan=plansza.SprawdzZwyciezce();
-			ZmienGracza();
-        }
-        plansza.Wyswietl();
-        if(stan==0)
-			cout<<"Remis!"<<endl;
-        else if(stan==1)
-			cout<<"Wygrales!"<<endl;
-		else if(stan==-1)
-			cout<<"Wygral komputer"<<endl;
 
-        cout<<"Nowa gra? 1 - tak, 0 - koniec."<<endl;
-        while(1) {
-            while (!(cin>>stan)){
-                cout<<"Zly wybor. 1 - tak, 0 - koniec."<<endl;
+Inicjalizacja();
 
-            }
-            if(stan==1)
-				break;
-            if(stan==0)
-				return;
-            else
-				cout<<"Zly wybor. 1 - tak, 0 - koniec."<<endl;
+while(stan==2)
+{
+  plansza.Wyswietl();
+
+  if(gracz==1) RuchGracza();
+
+   else
+
+    GKomputer.RuchKomputera(plansza);
+      stan=plansza.SprawdzZwyciezce();
+			 ZmienGracza();
+}
+    plansza.Wyswietl();
+
+      if(stan==0)
+      {
+        cout<<"REMIS"<<endl;
+        break;
+      }
+
+       else if(stan==1)
+        {
+         cout<<"WYGRALES"<<endl;
+         break;
         }
-    }
+
+		     else if(stan==-1)
+         {
+           cout<<"WYGRAL KOMPUTER"<<endl;
+           break;
+         }
+ }
+
 }
 
-/* Funkcja obslugujaca ruch gracza
-    Pozwala na wybranie pola, sprawdza poprawnosc wprowadzonych danych.
-*/
+/* Funkcja obslugujaca ruch gracza */
 void Gra::RuchGracza(){
+
     int w,k;
     bool zmiana=0;
-    cout<<"Twoj ruch. Najpierw wpisz wiersz, nastepnie kolumne.";
-    while (!zmiana){
+
+    cout << "TWOJ RUCH" << endl;
+    cout << "Wpisz go w postaci: WIERSZ (SPACJA) KOLUMNA" << endl;
+
+    while (!zmiana)
+    {
         while (!(cin>>w)){
-            cout<<"Zly wybor. Najpierw wpisz wiersz, nastepnie kolumne."<<endl;
-
+            cout<<"Źle, podaj jeszcze raz"<<endl;
         }
+
         while (!(cin>>k)){
-            cout<<"Zly wybor. Najpierw wpisz wiersz, nastepnie kolumne."<<endl;
-
+            cout<<"Źle, podaj jeszcze raz"<<endl;
         }
+
         if(w>=0 && w<plansza.ZwrocRozmiar() && k>=0 && k<plansza.ZwrocRozmiar())
-            if(plansza.ZwrocZnak(w,k)==0) {
+
+            if(plansza.ZwrocZnak(w,k)==0)
+            {
                 plansza.UstawZnak(w,k,1);
                 zmiana=1;
             }
+
             else
-				cout<<"Pole zajete. Wybierz nowe. Najpierw wpisz wiersz, nastepnie kolumne."<<endl;
+
+				cout<<"Pole zajete"<< endl;
+
         else
-			cout<<"Pole spoza planszy. Wybierz nowe. Najpierw wpisz wiersz, nastepnie kolumne."<<endl;
+
+			cout<<"Pole spoza planszy" << endl;
     }
 }

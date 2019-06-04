@@ -1,6 +1,6 @@
 #include <iostream>
-#include "gra.h"
-#include "plansza.h"
+#include "gra.hh"
+#include "plansza.hh"
 
 using namespace std;
 
