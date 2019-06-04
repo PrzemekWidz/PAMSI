@@ -7,7 +7,7 @@ Komputer::Komputer(){
 Komputer::~Komputer(){
 }
 /*Funkcja inicjalizuje gracza komputer.
-Wczytuje rozmiar i wygrywajacy rzad. 
+Wczytuje rozmiar i wygrywajacy rzad.
 */
 void Komputer::Inicjalizacja(Plansza& plansza){
     GKomputer=-1;
@@ -18,9 +18,9 @@ void Komputer::Inicjalizacja(Plansza& plansza){
 }
 
 
-/* Funkcja dla algorytmu minimax z ciêciami alfa i beta oraz ocen¹ uwzglêdniaj¹c¹ iloœæ ruchu
-    do zamierzonego rezultatu oraz ocenê wybranego pola.
-    Jezeli ruch konczy siê wygrana ktoregos z graczy lub remisem to zwracany jest ruch
+/* Funkcja dla algorytmu minimax z ciï¿½ciami alfa i beta oraz ocenï¿½ uwzglï¿½dniajï¿½cï¿½ iloï¿½ï¿½ ruchu
+    do zamierzonego rezultatu oraz ocenï¿½ wybranego pola.
+    Jezeli ruch konczy siï¿½ wygrana ktoregos z graczy lub remisem to zwracany jest ruch
     z ocena 1000-punkty za glebokosc dla zwyciestwa komputera i -1000+punkty za glebokosc
     dla zwyciestwa czlowieka.
     Jezeli ruch nie konczy gry to wykonywany jest kolejny ruch i rekurencyjnie wywolywana jest
@@ -29,7 +29,7 @@ void Komputer::Inicjalizacja(Plansza& plansza){
     ten najkorzystniejszy: Z najnizsza ocena w przypadku ruchu czlowieka i z najwyzsza w przypadku
     ruchu komputera.
     Ciecia alfa i beta pozwalaja ominac symulowania kolejnych ruchow gdy nie maja one wplywu na wybor.
-    Dla komputera: Po przeszukaniu jednej ze sciezek, pomija siê przeszukiwanie czesci kolejnej sciezki
+    Dla komputera: Po przeszukaniu jednej ze sciezek, pomija siï¿½ przeszukiwanie czesci kolejnej sciezki
     jezeli wiadomo jest ze przeciwnik wybierze w niej ruch dla nas najbardziej niekorzystny, ktory jest
     oceniany slabiej od poprzednio znalezionego. Dla przeciwnika ciecia dzialaja analogicznie.
 
@@ -41,9 +41,9 @@ Move Komputer::AlphaBetaMiniMax(Plansza& plansza,int alpha,int beta,int gracz,in
     Move ruch;
     vector<Move> ruchy;
 
-    if (rek) 
+    if (rek)
 		glebokosc++;
-    if(wynik!=2) 
+    if(wynik!=2)
 		return (wynik==-1) ? Move(wynik*(-1000)-20*glebokosc) : Move(wynik*(-1000)+20*glebokosc);
 
     else if(gracz==GKomputer){
@@ -52,7 +52,7 @@ Move Komputer::AlphaBetaMiniMax(Plansza& plansza,int alpha,int beta,int gracz,in
             for(j=0;j<plansza.ZwrocRozmiar();j++){
                 if(plansza.ZwrocZnak(i,j)==0){
                     plansza.UstawZnak(i,j,gracz);
-                    if (!rek) printf("|");
+                    
                     ruch.wynik = AlphaBetaMiniMax(plansza,najwynik,beta,Gracz,glebokosc,1).wynik;
                     ruch.w=i;
                     ruch.k=j;
@@ -82,9 +82,9 @@ Move Komputer::AlphaBetaMiniMax(Plansza& plansza,int alpha,int beta,int gracz,in
                     ruch.k=j;
                     ruchy.push_back(ruch);
                     plansza.UstawZnak(i,j,0);
-                    if(ruch.wynik<najwynik) 
+                    if(ruch.wynik<najwynik)
 						najwynik=ruch.wynik;
-                    if(alpha>=najwynik) 
+                    if(alpha>=najwynik)
 						i=j=plansza.ZwrocRozmiar();
                 }
             }

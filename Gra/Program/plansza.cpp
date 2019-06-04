@@ -39,7 +39,8 @@ char Plansza::Znak(int i,int j){
 
 /* Funkcja wyswietlajaca plansze */
 void Plansza::Wyswietl(){
-    system("cls");
+
+system("clear");
 
     cout<<"    Gra kolko i krzyzyk "<<rozmiar<<"x"<<rozmiar<<endl;
 	cout <<"   Aby wygrac uloz " << rzadwygryw << " w rzedzie" << endl;;
