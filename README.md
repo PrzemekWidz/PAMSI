@@ -34,6 +34,27 @@ Wykres dla sortowania introspektywnego :
 
 ![Zdjęcie projektu ](readme_photos/sortowanie_introspektywne_wykres.png "fig:") 
 
+# 2.Grafy 
+
+Tabelki z czasem działania algorytmu Dijkstry dla reprezentacji grafu w postaci macierzy oraz listy sąsiedztwa :
+
+a) macierz 
+
+![Zdjęcie projektu ](readme_photos/macierzwyniki_tabelka.PNG "fig:") 
+
+b) lista 
+
+![Zdjęcie projektu ](readme_photos/listawyniki_tabelka.PNG "fig:") 
+
+Wykresy przedstawiające czas działania algorytmu Dijkstry dla reprezen-tacji grafu w postaci macierzy oraz listy sąsiedztwa dla różnych gęstościoraz rozmiarów grafu :
+
+a) macierz 
+
+![Zdjęcie projektu ](readme_photos/macierzwykres.PNG "fig:") 
+
+b) lista
+
+![Zdjęcie projektu ](readme_photos/listawykres.PNG "fig:") 
 
 # 3.Gra 
 
