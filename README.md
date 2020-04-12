@@ -8,6 +8,15 @@ Projekty :
 | 2  | Grafy  | /Grafy | Zawiera pliki nagłówkowe i źródłowe programu oraz plik Makefile w folderze o nazwie "Program" oraz sprawozdanie w formacie .pdf  |
 | 3  | Gra  | /Gra | Zawiera pliki nagłówkowe i źródłowe programu oraz plik Makefile w folderze o nazwie "Program" oraz sprawozdanie w formacie .pdf  |
 
+# 1.Sortowanie 
+
+Tabelka dla sortowania przez scalanie :
+
+![Zdjęcie projektu ](readme_photos/przez_scalanie_tabelka.png "fig:") 
+
+Wykres dla sortowania przez scalanie :
+
+![Zdjęcie projektu ](readme_photos/przez_scalanie_wykres.png "fig:") 
 
 # 3.Gra 
 
